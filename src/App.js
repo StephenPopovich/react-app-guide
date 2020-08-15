@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">React App Guide</h1>
-        </header>
-        <p className="App-intro">
-          This is one of my first React applications
-        </p>
-      </div>
-    );
+    // return (
+    //   <div className="App">
+    //     <header className="App-header">
+    //       <h1 className="App-title">React App Guide</h1>
+    //     </header>
+    //     <p className="App-intro">
+    //       This is one of my first React applications
+    //     </p>
+    //   </div>
+    // );
+    return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
   }
 }
 
