@@ -12,9 +12,10 @@ class App extends Component {
         <p className="App-intro">
           This is one of my first React applications
         </p>
-        <Person />
-        <Person />
-        <Person />
+        <Person name="Max" age="28" />
+        <Person name="Stephen" age="30" >My Hobbies: Racing</Person>
+        <Person name="Sam" age="25" />
+
       </div>
     );
     // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
