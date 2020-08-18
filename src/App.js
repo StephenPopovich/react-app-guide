@@ -13,6 +13,8 @@ class App extends Component {
           This is one of my first React applications
         </p>
         <Person />
+        <Person />
+        <Person />
       </div>
     );
     // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
