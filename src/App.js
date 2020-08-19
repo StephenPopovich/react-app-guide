@@ -3,6 +3,15 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: 'Max', age: 28 },
+      { name: 'Manny', age: 29},
+      { name: 'Stephanie', age: 25}
+    ]
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -12,9 +21,10 @@ class App extends Component {
         <p className="App-intro">
           This is one of my first React applications
         </p>
-        <Person name="Max" age="28" />
-        <Person name="Stephen" age="30" >My Hobbies: Racing</Person>
-        <Person name="Sam" age="25" />
+        <button>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} >My Hobbies: Racing</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
 
       </div>
     );
