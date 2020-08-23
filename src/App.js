@@ -8,27 +8,31 @@ const app = props => {
       { name: 'Max', age: 28},
       { name: 'Manny', age: 29},
       { name: 'Stephanie', age: 25}
-    ]
-  });
+    ],
+      otherState: 'some other value'
+  }
 
-  const [otherState, setOtherState] = useState('some other values');
-
-  console.log(personsState, otherState);
-
-  const switchNameHandler = () => {
+  switchNameHandler = (newName) => {
    // console.log('Was clicked!');
    // DONT DO THIS: personsState.persons[0].name = "Steven";
-  setPersonsState({
+  this.setState( {
      persons:[
-       { name: 'Sam', age: 28 },
+       { name: newName, age: 28 },
        { name: 'Manny', age: 29},
        { name: 'Stephanie', age: 35}
-     ],
-      otherState: personsState.otherState
-   });
-  };
+     ]
+   } )
+  }
 
-  useState('some other value');
+  nameChangedHandler = (event) => {
+    this.setState( {
+       persons:[
+         { name: 'Max', age: 28},
+         { name: event.target.value, age: 29},
+         { name: 'Stephanie', age: 25}
+       ]
+     } )
+  }
 
     return (
       <div className="App">
@@ -38,17 +42,18 @@ const app = props => {
         <p className="App-intro">
           This is one of my first React applications
         </p>
-        <button onClick={switchNameHandler}>Switch Name</button>
+        <button onClick={() => return this.switchNameHandler('Steve=o!!!')}>Switch Name</button>
         <Person
-          name={personsState.persons[0].name}
-          age={personsState.persons[0].age} />
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
         <Person
-           name={personsState.persons[1].name}
-           age={personsState.persons[1].age}
-           click={switchNameHandler}>My Hobbies: Racing</Person>
+           name={this.state.persons[1].name}
+           age={this.state.persons[1].age}
+           onClick={this.switchNameHandler.bind(this, 'Silly Sally')}
+           changed={this.nameChangedHandler}>My Hobbies: Racing</Person>
         <Person
-          name={personsState.persons[2].name}
-          age={personsState.persons[2].age} />
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
 
       </div>
     );
