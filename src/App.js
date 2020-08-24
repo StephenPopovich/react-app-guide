@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-const app = props => {
-  const [personsState, setPersonsState] = useState({
+class app extends Component {
+ state = {
     persons: [
       { name: 'Max', age: 28},
       { name: 'Manny', age: 29},
       { name: 'Stephanie', age: 25}
     ],
       otherState: 'some other value'
-  }
+  };
 
   switchNameHandler = (newName) => {
    // console.log('Was clicked!');
@@ -34,6 +34,14 @@ const app = props => {
      } )
   }
 
+render () {
+  const style = {
+    backgroundColor: 'white',
+    font: 'inherit',
+    border: '1px solid blue',
+    padding: '8px'
+  };
+
     return (
       <div className="App">
         <header className="App-header">
@@ -42,7 +50,9 @@ const app = props => {
         <p className="App-intro">
           This is one of my first React applications
         </p>
-        <button onClick={() => return this.switchNameHandler('Steve=o!!!')}>Switch Name</button>
+        <button
+          style={style}
+          onClick={() => this.switchNameHandler('Steveo')}>Switch Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
