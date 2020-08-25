@@ -1,12 +1,20 @@
 .Person {
   width: 60%;
-  margin: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
   border: 1px solid #eee;
   box-shadow: 0 2px 3px #ccc;
   padding: 16px;
   text-align: center;
 }
 
+.Person-list{
+  
+}
+
 button{
-   
+ margin-bottom: 10px;
+ background: #ccc;
+ border: 1px solid black;
 }
