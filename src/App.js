@@ -4,12 +4,14 @@ import Person from './Person/Person';
 
 class App extends Component {
  state = {
+   //A 'persons' array with three elements
     persons: [
       { name: 'Max', age: 28},
       { name: 'Manny', age: 29},
       { name: 'Stephanie', age: 25}
     ],
       otherState: 'some other value',
+      //Add another property set to false to start off not displayed.
       showPersons: false
   };
 
@@ -52,6 +54,20 @@ render () {
     padding: '8px'
   };
 
+  let persons = null;
+
+  if (this.state.showPersons === true) {
+       persons = (
+         <div className="Person-list">
+           {this.state.persons.map(person => {
+             return <Person
+               name={person.name}
+               age={person.age} />
+           })}
+          </div>
+       );
+  }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -63,25 +79,7 @@ render () {
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {
-          this.state.showPersons === true ?
-          <div className="Person-list">
-            <button
-              onClick={() => this.switchNameHandler('Super Stephen')}>Change Name</button>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age} />
-          <Person
-             name={this.state.persons[1].name}
-             age={this.state.persons[1].age}
-             click={this.switchNameHandler.bind(this, 'Silly Sally')}
-             changed={this.nameChangedHandler}>My Hobbies: Racing</Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age} />
-
-        </div> : null
-      }
+         {persons}
 
 
       </div>
