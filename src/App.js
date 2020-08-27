@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
+   //Left off on 59. List & Keys
+
 class App extends Component {
  state = {
    //A 'persons' array with three elements
@@ -20,9 +22,9 @@ class App extends Component {
   nameChangedHandler = (event) => {
     this.setState( {
        persons:[
-         { name: 'Max', age: 28},
-         { name: event.target.value, age: 29},
-         { name: 'Stephanie', age: 25}
+         { id: 'A1', name: 'Max', age: 28},
+         { id: 'B1', name: event.target.value, age: 29},
+         { id: 'C1', name: 'Stephanie', age: 25}
        ]
      } )
   }
@@ -64,7 +66,8 @@ render () {
              return <Person
                click={() => this.deletePersonHandler (index)}
                name={person.name}
-               age={person.age} />
+               age={person.age}
+                key={person.id}/>
            })}
           </div>
        );
