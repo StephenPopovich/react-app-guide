@@ -29,7 +29,11 @@ class App extends Component {
 
 //A handler that deletes selected person element
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    //Creates copy of your array, slice without an arugmenet simply copies the full array and returns a new array which is returned.
+    // const persons = this.state.persons.splice();
+
+    //a spread operator spreads out the elements in this array into a list of element which simply get added to this array
+    const persons = [...this.state.persons];
     //Simply removes one element from the arroy
     persons.splice(personIndex, 1);
     //Set the new person's array to person
