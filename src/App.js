@@ -8,9 +8,9 @@ class App extends Component {
  state = {
    //A 'persons' array with three elements
     persons: [
-      { name: 'Max', age: 28},
-      { name: 'Manny', age: 29},
-      { name: 'Stephanie', age: 25}
+      { id: '1A', name: 'Max', age: 28},
+      { id: '1B', name: 'Manny', age: 29},
+      { id: '1C', name: 'Stephanie', age: 25}
     ],
       otherState: 'some other value',
       //Add another property set to false to start off not displayed.
@@ -19,14 +19,24 @@ class App extends Component {
 
 
 //A handler for changing the names based on an input event.
-  nameChangedHandler = (event) => {
-    this.setState( {
-       persons:[
-         { id: 'A1', name: 'Max', age: 28},
-         { id: 'B1', name: event.target.value, age: 29},
-         { id: 'C1', name: 'Stephanie', age: 25}
-       ]
-     } )
+  nameChangedHandler = (event, id) => {
+    //Updates the state only for the person of the input field we type into.
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+
+    });
+
+    const person = {
+      //spread operator
+      ...this.state.persons[personIndex]
+     };
+
+     person.name = event.target.value;
+
+     const persons = [...this.state.persons];
+     persons[personIndex] = person;
+
+    this.setState( {persons: persons} );
   }
 
 //A handler that deletes selected person element
@@ -67,7 +77,8 @@ render () {
                click={() => this.deletePersonHandler (index)}
                name={person.name}
                age={person.age}
-                key={person.id}/>
+               key={person.id}
+               changed={(event) => this.nameChangedHandler(event, person.id)}/>
            })}
           </div>
        );
