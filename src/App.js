@@ -61,7 +61,8 @@ class App extends Component {
 
 render () {
   const style = {
-    backgroundColor: 'white',
+    backgroundColor: 'green',
+    color: 'white',
     font: 'inherit',
     border: '1px solid blue',
     padding: '8px'
@@ -69,6 +70,9 @@ render () {
 
   let persons = null;
 
+//Conditionally outputs content/data
+//Map operator a default JavaScript method you can use on arrays to map your JavaScript array of objects or strings into an array of JSX elements and render for the screen for you.
+//Map also give you the element for which it is currently excuting its function, but also the index for example when you need to remove an element (which needs a key property like id)
   if (this.state.showPersons === true) {
        persons = (
          <div className="Person-list">
@@ -82,6 +86,7 @@ render () {
            })}
           </div>
        );
+       style.backgroundColor = 'red';
   }
 
     return (
