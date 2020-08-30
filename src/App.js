@@ -89,13 +89,27 @@ render () {
        style.backgroundColor = 'red';
   }
 
+// A variable that creates an array of strings, which are the new classes I added to the CCS file
+// join() turn an array of strings into one strings which in the end is "red bold"
+  // let classes = ['red', 'bold'].join(' ');
+  // an if statement/check that changes the class if their are 2 or less elements (persons).
+  const classes = [];
+  if (this.state.persons.length <= 2){
+    classes.push('red'); //classes = ['red']
+  }
+    // an if statement/check that changes the class if their are 1 or less elements (persons).
+  if (this.state.persons.length <= 1){
+    classes.push('bold'); //classes = ['red bold']
+  }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">React App Guide</h1>
         </header>
-        <p className="App-intro">
-          This is one of my first React applications
+        <p>Classes won't work now because it is any array, must use join() with an empty space assigning a string which is a join array of our new classes:</p>
+        <p className={classes.join(' ')}>
+        This is one of my first React applications
         </p>
         <button
           style={style}
