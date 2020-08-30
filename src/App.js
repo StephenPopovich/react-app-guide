@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium';
 
    //Left off on 59. List & Keys
 
@@ -123,4 +124,6 @@ render () {
   }
 }
 
-export default App;
+// Calling radium as a function and wrap your app with it. A higher order component. A component wrapping a component adding/injecting extra functionality.
+// Can be used on components created with class and extends components as well as functional components.
+export default Radium(App);
