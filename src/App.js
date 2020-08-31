@@ -66,7 +66,12 @@ render () {
     color: 'white',
     font: 'inherit',
     border: '1px solid blue',
-    padding: '8px'
+    padding: '8px',
+    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: 'lightgreen',
+      color: 'black'
+    }
   };
 
   let persons = null;
@@ -88,6 +93,10 @@ render () {
           </div>
        );
        style.backgroundColor = 'red';
+       style[':hover'] = {
+         backgroundColor: 'salmon',
+         color: 'black'
+       }
   }
 
 // A variable that creates an array of strings, which are the new classes I added to the CCS file
