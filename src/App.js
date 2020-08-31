@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import Person from './Person/Person';
-import Radium from 'radium';
+
+// We can simply import style root from radium with this first radium import here, we're importing the default export of that file and then we import a named export style root
+import Radium, {StyleRoot} from 'radium';
 
    //Left off on 59. List & Keys
 
@@ -113,6 +116,7 @@ render () {
   }
 
     return (
+    <StyleRoot>
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">React App Guide</h1>
@@ -125,9 +129,8 @@ render () {
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
          {persons}
-
-
       </div>
+    </StyleRoot>
     );
     // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
   }
