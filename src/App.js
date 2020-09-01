@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import Person from './Person/Person';
-
 // We can simply import style root from radium with this first radium import here, we're importing the default export of that file and then we import a named export style root
 import Radium, {StyleRoot} from 'radium';
 
@@ -116,7 +114,6 @@ render () {
   }
 
     return (
-    <StyleRoot>
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">React App Guide</h1>
@@ -130,7 +127,6 @@ render () {
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
          {persons}
       </div>
-    </StyleRoot>
     );
     // return React.createElement('div', null, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
   }
@@ -138,4 +134,4 @@ render () {
 
 // Calling radium as a function and wrap your app with it. A higher order component. A component wrapping a component adding/injecting extra functionality.
 // Can be used on components created with class and extends components as well as functional components.
-export default Radium(App);
+export default App;
