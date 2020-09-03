@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import styled from 'styled-components'
+
+import classes from './App.css';
 import Person from './Person/Person';
 
    //Left off on 59. List & Keys
@@ -61,20 +61,9 @@ class App extends Component {
   }
 
 render () {
-  const style = {
-    backgroundColor: 'green',
-    color: 'white',
-    font: 'inherit',
-    border: '1px solid blue',
-    padding: '8px',
-    cursor: 'pointer',
-    ':hover': {
-      backgroundColor: 'lightgreen',
-      color: 'black'
-    }
-  };
-
   let persons = null;
+//  a button class variable which initally is an Array, a pointer at this unique class name which is generate by CSS Module package.
+  let btnClass = '';
 
 //Conditionally outputs content/data
 //Map operator a default JavaScript method you can use on arrays to map your JavaScript array of objects or strings into an array of JSX elements and render for the screen for you.
@@ -92,37 +81,33 @@ render () {
            })}
           </div>
        );
-      //  style.backgroundColor = 'red';
-      //  style[':hover'] = {
-      //    backgroundColor: 'salmon',
-      //    color: 'black'
-      //  }
+
+      btnClass = classes.Red;
   }
 
 // A variable that creates an array of strings, which are the new classes I added to the CCS file
 // join() turn an array of strings into one strings which in the end is "red bold"
   // let classes = ['red', 'bold'].join(' ');
   // an if statement/check that changes the class if their are 2 or less elements (persons).
-  const classes = [];
+  const assignedClasses = [];
   if (this.state.persons.length <= 2){
-    classes.push('red'); //classes = ['red']
+    assignedClasses.push(classes.red); //assignedClasses = ['red']
   }
     // an if statement/check that changes the class if their are 1 or less elements (persons).
   if (this.state.persons.length <= 1){
-    classes.push('bold'); //classes = ['red bold']
+    assignedClasses.push(classes.bold); //assignedClasses = ['red bold']
   }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <header className="App-header">
           <h1 className="App-title">React App Guide</h1>
         </header>
         <p>Classes won't work now because it is any array, must use join() with an empty space assigning a string which is a join array of our new classes:</p>
-        <p className={classes.join(' ')}>
+        <p className={assignedClasses.join(' ')}>
         This is one of my first React applications
         </p>
-        <button className="button"
-          onClick={this.togglePersonsHandler}>Toggle Persons
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons
         </button>
          {persons}
       </div>
