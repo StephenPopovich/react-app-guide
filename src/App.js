@@ -5,23 +5,6 @@ import Person from './Person/Person';
 
    //Left off on 59. List & Keys
 
-// A style constant with style code in regular css using styled-components
-// Background color dynamic style in a turnary expression if alternative prop is true red, if not green
-const StyledButton = styled.button`
-  background-color: ${props => props.alternative ? 'red' : 'green'};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
-
-  &:hover {
-    background-color: ${props => props.alternative ? 'salmon' : 'lightgreen'};
-    color: black;
-  }
-`
-
 class App extends Component {
  state = {
    //A 'persons' array with three elements
@@ -138,9 +121,9 @@ render () {
         <p className={classes.join(' ')}>
         This is one of my first React applications
         </p>
-        <StyledButton alternative={this.state.showPersons}
+        <button className="button"
           onClick={this.togglePersonsHandler}>Toggle Persons
-        </StyledButton>
+        </button>
          {persons}
       </div>
     );
