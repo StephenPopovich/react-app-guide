@@ -1,6 +1,23 @@
 import React from 'react';
-import './Person.css';
+// import './Person.css';
+import styled from 'styled-components'
 
+
+// new component that is starting with an uppercase inorder to use this component in the same file.
+const StyleDiv = styled.div`
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+
+  @media (min-width: 640px) {
+    width: 450px;
+  }
+  `;
 
 const person = (props) => {
 
@@ -11,11 +28,12 @@ const person = (props) => {
    };
 
    return (
-        <div className="Person" style={style}>
+        // <div className="Person" style={style}>
+        <StyleDiv>
           <p onClick={props.click}>I'm a {props.name} I am {props.age} years old!</p>
           <p>{props.children}</p>
           <input type="text" onChange={props.changed}  value={props.name}/>
-         </div>
+        </StyleDiv>
  )
 };
 
