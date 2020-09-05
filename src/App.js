@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
    //Left off on 59. List & Keys
 
@@ -23,7 +23,7 @@ class App extends Component {
   nameChangedHandler = (event, id) => {
     //Updates the state only for the person of the input field we type into.
     const personIndex = this.state.persons.findIndex(p => {
-      return p.id === id;
+      return p.userid === id;
 
     });
 
@@ -72,12 +72,13 @@ render () {
        persons = (
          <div className="Person-list">
            {this.state.persons.map((person, index) => {
-             return <Person
+             return <ErrorBoundary key={person.id}>
+               <Person
                click={() => this.deletePersonHandler (index)}
                name={person.name}
                age={person.age}
-               key={person.id}
                changed={(event) => this.nameChangedHandler(event, person.id)}/>
+             </ErrorBoundary>
            })}
           </div>
        );
