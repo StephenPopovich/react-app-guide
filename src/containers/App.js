@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
 
 // App is our main component and holds our state
    //Left off on 85. A Better Project Structure
@@ -22,7 +23,7 @@ class App extends Component {
   nameChangedHandler = (event, id) => {
     //Updates the state only for the person of the input field we type into.
     const personIndex = this.state.persons.findIndex(p => {
-      return p.userid === id;
+      return p.id === id;
 
     });
 
@@ -62,52 +63,24 @@ class App extends Component {
 render () {
   let persons = null;
 //  a button class variable which initally is an Array, a pointer at this unique class name which is generate by CSS Module package.
-  let btnClass = '';
+
 
 //Conditionally outputs content/data
 //Map operator a default JavaScript method you can use on arrays to map your JavaScript array of objects or strings into an array of JSX elements and render for the screen for you.
 //Map also give you the element for which it is currently excuting its function, but also the index for example when you need to remove an element (which needs a key property like id)
-  if (this.state.showPersons === true) {
-       persons = (
-         <div className="Person-list">
-           {this.state.persons.map((person, index) => {
-             return <Person
-               click={() => this.deletePersonHandler (index)}
-               name={person.name}
-               age={person.age}
-               key={person.id}
-               changed={(event) => this.nameChangedHandler(event, person.id)}/>
-           })}
-          </div>
-       );
-
-      btnClass = classes.Red;
+  if ( this.state.showPersons ) {
+       persons = <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler} />;
   }
 
-// A variable that creates an array of strings, which are the new classes I added to the CCS file
-// join() turn an array of strings into one strings which in the end is "red bold"
-  // let classes = ['red', 'bold'].join(' ');
-  // an if statement/check that changes the class if their are 2 or less elements (persons).
-  const assignedClasses = [];
-  if (this.state.persons.length <= 2){
-    assignedClasses.push(classes.red); //assignedClasses = ['red']
-  }
-    // an if statement/check that changes the class if their are 1 or less elements (persons).
-  if (this.state.persons.length <= 1){
-    assignedClasses.push(classes.bold); //assignedClasses = ['red bold']
-  }
 
     return (
       <div className={classes.App}>
-        <header className="App-header">
-          <h1 className="App-title">React App Guide</h1>
-        </header>
-        <p>Classes won't work now because it is any array, must use join() with an empty space assigning a string which is a join array of our new classes:</p>
-        <p className={assignedClasses.join(' ')}>
-        This is one of my first React applications
-        </p>
-        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons
-        </button>
+          <Cockpit showPersons={this.state.showPersons}
+          persons={this.state.persons} 
+          clicked={this.togglePersonsHandler}/>
          {persons}
       </div>
     );
