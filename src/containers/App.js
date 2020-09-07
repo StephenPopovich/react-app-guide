@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../components/Persons/Person/Person';
 
-   //Left off on 59. List & Keys
-
+// App is our main component and holds our state
+   //Left off on 85. A Better Project Structure
 class App extends Component {
  state = {
    //A 'persons' array with three elements
@@ -72,13 +71,12 @@ render () {
        persons = (
          <div className="Person-list">
            {this.state.persons.map((person, index) => {
-             return <ErrorBoundary key={person.id}>
-               <Person
+             return <Person
                click={() => this.deletePersonHandler (index)}
                name={person.name}
                age={person.age}
+               key={person.id}
                changed={(event) => this.nameChangedHandler(event, person.id)}/>
-             </ErrorBoundary>
            })}
           </div>
        );
