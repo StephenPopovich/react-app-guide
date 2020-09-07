@@ -4,8 +4,15 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
 
 // App is our main component and holds our state
-   //Left off on 85. A Better Project Structure
+
+//Left off on 91 Component Update Lifecycle (for props Changes)
+
 class App extends Component {
+  constructor(props) {
+     super(props);
+     console.log('App.js] constructor');
+  }
+
  state = {
    //A 'persons' array with three elements
     persons: [
@@ -16,8 +23,20 @@ class App extends Component {
       otherState: 'some other value',
       //Add another property set to false to start off not displayed.
       showPersons: false
-  };
+  }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log('App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
+  }
+
+ componentDidMount() {
+   console.log('[App.js] componentDidMount');
+ }
 
 //A handler for changing the names based on an input event.
   nameChangedHandler = (event, id) => {
@@ -61,6 +80,7 @@ class App extends Component {
   }
 
 render () {
+  console.log('[App.js] render');
   let persons = null;
 //  a button class variable which initally is an Array, a pointer at this unique class name which is generate by CSS Module package.
 
@@ -78,7 +98,9 @@ render () {
 
     return (
       <div className={classes.App}>
-          <Cockpit showPersons={this.state.showPersons}
+          <Cockpit 
+          title={this.props.appTitle}
+          showPersons={this.state.showPersons}
           persons={this.state.persons} 
           clicked={this.togglePersonsHandler}/>
          {persons}

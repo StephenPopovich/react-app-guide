@@ -22,7 +22,7 @@ const cockpit = (props) => {
 
     return (
      <div className={classes.Cockpit}>
-        <h1 className="App-title">React App Guide</h1>
+        <h1 className="App-title">{props.title}</h1>
         <p>Classes won't work now because it is any array, must use join() with an empty space assigning a string which is a join array of our new classes:</p>
         <p className={assignedClasses.join(' ')}>
         This is one of my first React applications
