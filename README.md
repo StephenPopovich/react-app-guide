@@ -1,4 +1,5 @@
 Stephen Popovich's React App Guide
+last developed on: 9/8/2020
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
